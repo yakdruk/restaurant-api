@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant Management System</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- <script defer src="script.js"></script> -->
+    <script defer src="./JS/auth.js"></script>
+    <style>
+      .card {
+        height: 100%;
+      }
+      .card-body {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a id="homeLink" class="navbar-brand" href="#"
+          >Restaurant Management System</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a id="clientsLink" class="nav-link" href="#">Clients</a>
+            </li>
+            <li class="nav-item">
+              <a id="dishesLink" class="nav-link" href="#">Dishes</a>
+            </li>
+            <li class="nav-item">
+              <a id="workersLink" class="nav-link" href="#">Workers</a>
+            </li>
+            <li class="nav-item">
+              <a id="eventsLink" class="nav-link" href="#">Events</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Login/Register Modal -->
+    <div
+      class="modal fade"
+      id="loginModal"
+      tabindex="-1"
+      aria-labelledby="loginModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginModalLabel">Login/Register</h5>
+            <button
+              type="button"
+              class="btn-close"
+              id="closeModal"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div id="errorMessage" class="error-message"></div>
+
+          <div class="modal-body">
+            <!-- Login form -->
+            <form id="loginForm">
+              <div class="mb-3">
+                <label for="loginUsername" class="form-label">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="loginUsername"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="loginPassword" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="loginPassword"
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+                Login
+              </button>
+            </form>
+            <!-- Register form -->
+            <form id="registerForm" style="display: none">
+              <div class="mb-3">
+                <label for="registerUsername" class="form-label"
+                  >Username</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="registerUsername"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="registerPassword" class="form-label"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="registerPassword"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="verifyPassword" class="form-label"
+                  >Verify Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="verifyPassword"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="toggleRegisterBtn"
+            >
+              Switch to Register
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- End Login/Register Modal -->
+
+    <div class="container mt-4" id="cardsContainer">
+      <h2>Welcome to the Restaurant Management System</h2>
+      <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="col">
+          <div class="card">
+            <img src="./image/client.jpg" class="card-img-top" alt="Dishes" />
+            <div class="card-body">
+              <h5 class="card-title">Clients</h5>
+              <p class="card-text">Manage client system</p>
+              <a id="clientsLink" href="#" class="btn btn-primary mt-auto"
+                >Go to Clients</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="./image/dish.jpg" class="card-img-top" alt="Dishes" />
+            <div class="card-body">
+              <h5 class="card-title">Dishes</h5>
+              <p class="card-text">Manage restaurant's dishes</p>
+              <a id="dishesButton" href="#" class="btn btn-primary mt-auto"
+                >Go to Dishes</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="./image/worker.jpg" class="card-img-top" alt="Dishes" />
+            <div class="card-body">
+              <h5 class="card-title">Workers</h5>
+              <p class="card-text">Manage employees, wages, and salaries</p>
+              <a id="workersButton" href="#" class="btn btn-primary mt-auto"
+                >Go to Workers</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="./image/event.jpg" class="card-img-top" alt="Dishes" />
+            <div class="card-body">
+              <h5 class="card-title">Events</h5>
+              <p class="card-text">Manage events in the restaurant</p>
+              <a id="eventsButton" href="#" class="btn btn-primary mt-auto"
+                >Go to Events</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </body>
+</html>
